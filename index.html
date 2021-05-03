@@ -11,13 +11,18 @@
 <body>
     
     <div id="app">
-        <span v-if="!isReady()">Loading...</span>
-        <ul v-else>
-            <li 
-            v-for="email in emailList">
-                {{ email }}
-            </li>
-        </ul>
+
+        <div class="container">
+            <h1 class="title">Email List</h1>
+            <span v-if="!isReady()">Loading...</span>
+            <ul v-else>
+                <li class="email"
+                v-for="email in emailList">
+                    {{ email }}
+                </li>
+            </ul>
+        </div>
+
     </div>
     
     
