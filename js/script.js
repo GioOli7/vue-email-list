@@ -3,6 +3,11 @@ const app = new Vue({
     data: {
         emailList: [],
     },
+    computed: {
+        isReady() {
+            return this.emailList.length === 10;
+        }
+    },
     created() {
         this.getMail(10);
         // console.log(this.emailList);
@@ -17,18 +22,10 @@ const app = new Vue({
         getMail(nElem) {
             for (let i = 0; i < nElem; i++) {
                 axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
-                .then((result) => {
-                    this.emailList.push(result.data.response)
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
+                .then(result => this.emailList.push(result.data.response))
+                .catch(error => console.log(error))
             }
         },
-
-        isReady() {
-            return this.emailList.length === 10;
-        }
-
+        
     }
 })
